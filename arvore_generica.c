@@ -42,3 +42,10 @@ void inserir_filho(No* pai, No* filho) {
     }
 }
 
+//função que conta quantos nós existe em uma árvore
+
+int contar_nos(No* raiz) {
+    if (raiz == NULL) return 0;
+    return 1 + contar_nos(raiz->esq) + contar_nos(raiz->dir);
+}
+
