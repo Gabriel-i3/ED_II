@@ -49,3 +49,22 @@ int contar_nos(No* raiz) {
     return 1 + contar_nos(raiz->esq) + contar_nos(raiz->dir);
 }
 
+
+//função recursiva para calcular a altura de uma árvore.
+int calcular_altura(No* raiz) {
+    if (raiz == NULL) return -1;
+    
+    int max_altura_filhos = -1;
+    No* filho = raiz->esq; 
+    
+   
+    while (filho != NULL) {
+        int alt_filho = calcular_altura(filho);
+        if (alt_filho > max_altura_filhos) {
+            max_altura_filhos = alt_filho;
+        }
+        filho = filho->dir;
+    }
+    
+    return max_altura_filhos + 1;
+}
