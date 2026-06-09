@@ -90,3 +90,24 @@ int buscar_valor(No* raiz, int valor) {
     return buscar_valor(raiz->esq, valor) || buscar_valor(raiz->dir, valor);
 }
 
+//imprime os nós por nível
+
+void imprimir_nivel_especifico(No* raiz, int nivel_alvo, int nivel_atual) {
+    if (raiz == NULL) return;
+    
+    if (nivel_atual == nivel_alvo) {
+        printf("%d ", raiz->dado);
+    }
+    
+    imprimir_nivel_especifico(raiz->esq, nivel_alvo, nivel_atual + 1); // Desce nível nos filhos
+    imprimir_nivel_especifico(raiz->dir, nivel_alvo, nivel_atual);     // Mantém nível nos irmãos
+}
+
+void imprimir_por_nivel(No* raiz) {
+    int h = calcular_altura(raiz);
+    for (int i = 0; i <= h; i++) {
+        printf("Nivel %d: ", i);
+        imprimir_nivel_especifico(raiz, i, 0);
+        printf("\n");
+    }
+}
