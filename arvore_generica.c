@@ -68,3 +68,16 @@ int calcular_altura(No* raiz) {
     
     return max_altura_filhos + 1;
 }
+
+//Contar quantas folhas existem
+
+int contar_folhas(No* raiz) {
+    if (raiz == NULL) return 0;
+    
+    if (raiz->esq == NULL) {
+        return 1 + contar_folhas(raiz->dir);
+    }
+    
+    return contar_folhas(raiz->esq) + contar_folhas(raiz->dir);
+}
+
