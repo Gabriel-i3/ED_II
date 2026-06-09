@@ -111,3 +111,14 @@ void imprimir_por_nivel(No* raiz) {
         printf("\n");
     }
 }
+
+//função para destruir/liberar toda a árvore da memória.
+
+void destruir_arvore(No* raiz) {
+    if (raiz == NULL) return;
+    
+    destruir_arvore(raiz->esq);
+    destruir_arvore(raiz->dir);
+    
+    free(raiz);
+}
