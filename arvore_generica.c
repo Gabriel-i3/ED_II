@@ -81,3 +81,12 @@ int contar_folhas(No* raiz) {
     return contar_folhas(raiz->esq) + contar_folhas(raiz->dir);
 }
 
+//Verificar se um valor existe na árvore
+
+int buscar_valor(No* raiz, int valor) {
+    if (raiz == NULL) return 0;
+    if (raiz->dado == valor) return 1;
+    
+    return buscar_valor(raiz->esq, valor) || buscar_valor(raiz->dir, valor);
+}
+
