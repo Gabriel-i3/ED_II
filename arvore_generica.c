@@ -24,3 +24,21 @@ No* criar_no(int valor) {
     }
     return novo;
 }
+
+//função para inserir filhos em um nó
+
+void inserir_filho(No* pai, No* filho) {
+    if (pai == NULL || filho == NULL) return;
+    
+    if (pai->esq == NULL) {
+        pai->esq = filho;
+    } else {
+        
+        No* atual = pai->esq;
+        while (atual->dir != NULL) {
+            atual = atual->dir;
+        }
+        atual->dir = filho; 
+    }
+}
+
